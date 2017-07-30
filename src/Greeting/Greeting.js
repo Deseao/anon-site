@@ -10,6 +10,7 @@ class Greeting extends React.Component {
       <div>
         <p>Welcome to Anon. Are you a Group Leader or a Participant?</p>
         <Link to="/leader">Leader</Link>
+        <br />
         <Link to="/participant">Participant</Link>
       </div>
     )
