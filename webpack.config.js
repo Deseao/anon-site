@@ -1,4 +1,6 @@
 const path = require('path')
+const webpack = require('webpack')
+const apiUrl = process.env.API_URL || 'http://localhost:8080'
 
 module.exports = {
   entry: ['babel-polyfill','./src/app.js'],
@@ -11,6 +13,13 @@ module.exports = {
       { use: 'babel-loader', test:/\.js$/ }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'API_URL': JSON.stringify(apiUrl)
+      }
+    })
+  ],
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     historyApiFallback: true,
